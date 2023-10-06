@@ -12,7 +12,12 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "fastify": "^4.23.2"
+    "@fastify/autoload": "^5.7.1",
+    "@fastify/cors": "^8.4.0",
+    "@fastify/helmet": "^11.1.1",
+    "@fastify/sensible": "^5.3.0",
+    "fastify": "^4.23.2",
+    "fastify-plugin": "^4.5.1"
   },
   "devDependencies": {
     "@types/node": "^20.8.2",
