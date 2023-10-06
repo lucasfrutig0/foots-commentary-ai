@@ -1,6 +1,9 @@
+import 'dotenv/config'
 import fastify, { FastifyRequest, FastifyReply } from 'fastify'
+import path from 'path'
+import AutoLoad from '@fastify/autoload'
 
-const server = fastify({
+export const server = fastify({
   serializerOpts: {
     res(reply: FastifyReply) {
       return {
@@ -20,14 +23,20 @@ const server = fastify({
   },
 })
 
-server.get('/ping', async (request, reply) => {
-  return 'pong\n'
+server.register(AutoLoad, {
+  dir: path.join(__dirname, 'plugins'),
 })
 
-server.listen({ port: 8080 }, (err, address) => {
+server.register(AutoLoad, {
+  dir: path.join(__dirname, 'routes'),
+})
+
+server.listen({ port: Number(process.env.PORT) || 8080 }, (err, address) => {
   if (err) {
     console.error(err)
     process.exit(1)
   }
-  console.log(`Server listening at ${address}`)
+
+  console.log('process', process.env.PORT)
+  console.log('Server listening at ' + address)
 })
