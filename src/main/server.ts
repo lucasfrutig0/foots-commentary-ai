@@ -1,7 +1,7 @@
-import 'dotenv/config'
 import fastify, { FastifyRequest, FastifyReply } from 'fastify'
 import path from 'path'
 import AutoLoad from '@fastify/autoload'
+import { config } from './config'
 
 export const server = fastify({
   serializerOpts: {
@@ -31,12 +31,10 @@ server.register(AutoLoad, {
   dir: path.join(__dirname, 'routes'),
 })
 
-server.listen({ port: Number(process.env.PORT) || 8080 }, (err, address) => {
+server.listen({ port: Number(config.port) || 8080 }, (err, address) => {
   if (err) {
     console.error(err)
     process.exit(1)
   }
-
-  console.log('process', process.env.PORT)
   console.log('Server listening at ' + address)
 })
