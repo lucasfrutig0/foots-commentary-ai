@@ -6,5 +6,5 @@
     "sourceMap": true
   },
   "include": ["src/**/*.ts"],
-  "exclude": [".eslintrc.js"]
+  "exclude": ["node_modules", "coverage", "dist", "src/test", ".eslintrc.js"]
 }
