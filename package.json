@@ -1,0 +1,36 @@
+{
+  "name": "foots-commentary-ai",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "lfrutig",
+  "license": "MIT",
+  "scripts": {
+    "build": "rimraf dist && tsc",
+    "dev": "nodemon src/index.ts",
+    "start": "node dist/index.js",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "fastify": "^4.23.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.2",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-config-standard-with-typescript": "^39.1.0",
+    "fastify-tsconfig": "^2.0.0",
+    "husky": "^8.0.0",
+    "nodemon": "^3.0.1",
+    "prettier": "^3.0.3",
+    "rimraf": "^5.0.5",
+    "tap": "^18.4.3",
+    "ts-node": "^10.9.1",
+    "tsx": "^3.13.0",
+    "typescript": "^5.2.2"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier — config .prettierrc 'src/**/*.ts' — write",
+      "eslint . — ext .ts — fix"
+    ]
+  }
+}
